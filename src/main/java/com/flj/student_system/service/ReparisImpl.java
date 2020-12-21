@@ -44,4 +44,20 @@ public class ReparisImpl implements ReparisService {
         int updateResult = tRepairsMapper.updateByPrimaryKeySelective(tRepairs);
         return updateResult;
     }
+
+
+    @Override
+    public int selectAllCount() {
+        return tRepairsMapper.selectCountRepairs();
+    }
+
+    @Override
+    public int selectAllFinishCount() {
+        return tRepairsMapper.selectCountFinishRepairs();
+    }
+
+    @Override
+    public int selectAllNotFinishCount() {
+        return tRepairsMapper.selectCountNotFinishRepairs();
+    }
 }

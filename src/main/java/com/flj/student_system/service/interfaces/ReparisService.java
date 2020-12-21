@@ -21,4 +21,20 @@ public interface ReparisService {
     * 更改工单状态
     * */
     int changeStateReparis(TRepairs tRepairs);
+
+    /*
+    * 查询所有工单数
+    * */
+    int selectAllCount();
+
+    /*
+     * 查询所有已完成工单数
+     * */
+    int selectAllFinishCount();
+
+    /*
+     * 查询所有未完成工单数
+     * */
+    int selectAllNotFinishCount();
+
 }

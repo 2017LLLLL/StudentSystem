@@ -159,7 +159,7 @@
 			   enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="MySql"/>
 		</table>-->
-		<table schema="root" tableName="t_role_router"   enableCountByExample="false"
+		<!--<table schema="root" tableName="t_role_router"   enableCountByExample="false"
 			   enableUpdateByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="MySql"/>
@@ -176,9 +176,9 @@
 			   enableUpdateByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="MySql"/>
-		</table>
+		</table>-->
 
-		<table schema="root" tableName="t_role_menu"   enableCountByExample="false"
+		<table schema="root" tableName="t_router_menu"   enableCountByExample="false"
 			   enableUpdateByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="MySql"/>

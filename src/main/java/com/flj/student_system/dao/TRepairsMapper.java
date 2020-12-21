@@ -64,4 +64,20 @@ public interface TRepairsMapper {
     * 新增工单
     * */
     int insertOneRepairs(RepairsForm repairsForm);
+
+    /*
+    * 查询工单总数
+    * */
+    int selectCountRepairs();
+
+    /*
+    * 查询已完成工单总数
+    * */
+    int selectCountFinishRepairs();
+
+
+    /*
+    * 查询未完成工单总数
+    * */
+    int selectCountNotFinishRepairs();
 }

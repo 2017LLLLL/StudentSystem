@@ -183,4 +183,21 @@
       </if>
     </trim>
   </insert>
+
+
+  <!--查询所有工单-->
+  <select id="selectCountRepairs" resultType="java.lang.Integer">
+    select count(1) from t_repairs
+  </select>
+
+  <!--查询已完成工单数据-->
+  <select id="selectCountFinishRepairs" resultType="java.lang.Integer">
+    select count(1) from t_repairs where state = 1;
+  </select>
+
+  <!--查询待完成工单数据-->
+  <select id="selectCountNotFinishRepairs" resultType="java.lang.Integer">
+    select count(1) from t_repairs where state = 0;
+  </select>
+
 </mapper>

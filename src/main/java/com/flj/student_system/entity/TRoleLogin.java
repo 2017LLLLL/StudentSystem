@@ -172,4 +172,15 @@ public class TRoleLogin {
     public void setMark(String mark) {
         this.mark = mark;
     }
+
+    @Override
+    public String toString() {
+        return "TRoleLogin{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", href='" + href + '\'' +
+                ", image='" + image + '\'' +
+                ", mark='" + mark + '\'' +
+                '}';
+    }
 }

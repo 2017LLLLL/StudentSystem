@@ -139,4 +139,14 @@ public class TRoleHome {
     public void setMark(String mark) {
         this.mark = mark;
     }
+
+    @Override
+    public String toString() {
+        return "TRoleHome{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", href='" + href + '\'' +
+                ", mark='" + mark + '\'' +
+                '}';
+    }
 }
