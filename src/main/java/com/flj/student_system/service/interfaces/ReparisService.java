@@ -1,6 +1,7 @@
 package com.flj.student_system.service.interfaces;
 
 import com.flj.student_system.entity.TRepairs;
+import com.flj.student_system.entity.dto.ReparisCountDTO;
 import com.flj.student_system.entity.form.RepairsForm;
 
 import java.util.List;
@@ -36,5 +37,7 @@ public interface ReparisService {
      * 查询所有未完成工单数
      * */
     int selectAllNotFinishCount();
+
+    ReparisCountDTO selectAllType();
 
 }

@@ -2,11 +2,13 @@ package com.flj.student_system.service;
 
 import com.flj.student_system.dao.TRepairsMapper;
 import com.flj.student_system.entity.TRepairs;
+import com.flj.student_system.entity.dto.ReparisCountDTO;
 import com.flj.student_system.entity.form.RepairsForm;
 import com.flj.student_system.service.interfaces.ReparisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,9 +27,10 @@ public class ReparisImpl implements ReparisService {
         if(repairsForm == null){
             return -1;
         }
-        if(repairsForm.getDormitoryNum() == null || repairsForm.getRepairsTime() == null || repairsForm.getProblem() == null){
+        if(repairsForm.getDormitoryNum() == null || repairsForm.getProblem() == null){
             return -2;
         }
+        repairsForm.setRepairsTime(new Date());
         int insertResult = tRepairsMapper.insertOneRepairs(repairsForm);
         return insertResult;
     }
@@ -60,4 +63,15 @@ public class ReparisImpl implements ReparisService {
     public int selectAllNotFinishCount() {
         return tRepairsMapper.selectCountNotFinishRepairs();
     }
+
+    @Override
+    public ReparisCountDTO selectAllType() {
+        ReparisCountDTO reparisCountDTO = new ReparisCountDTO();
+        reparisCountDTO.setAllReparis(selectAllCount());
+        reparisCountDTO.setFinishReparis(selectAllFinishCount());
+        reparisCountDTO.setNotFinishReparis(selectAllNotFinishCount());
+        return reparisCountDTO;
+    }
+
+
 }

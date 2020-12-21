@@ -83,4 +83,9 @@ public interface TStudentMapper {
     * 修改密码
     * */
     int selectCheckPassword(Integer peopleId, String password);
+
+    /*
+    * 查询学生总数
+    * */
+    int selectAllCount();
 }

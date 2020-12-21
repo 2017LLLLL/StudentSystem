@@ -1,6 +1,7 @@
 package com.flj.student_system.controller;
 
 import com.flj.student_system.entity.TRepairs;
+import com.flj.student_system.entity.dto.ReparisCountDTO;
 import com.flj.student_system.entity.form.RepairsForm;
 import com.flj.student_system.service.interfaces.ReparisService;
 import com.flj.student_system.util.Result;
@@ -29,6 +30,7 @@ public class RepairsController {
     @PostMapping("addRepairs")
     @ApiOperation("新增维修工单")
     public Result addRepairs(RepairsForm repairsForm){
+        System.out.println(repairsForm);
         if(repairsForm == null){
             return Result.returnFailWithMessage("传入的值为空！");
         }
@@ -50,6 +52,14 @@ public class RepairsController {
             return Result.returnFailWithMessage("数据插入失败，请检查数据是否存在或缺少关键信息！");
         }
         return Result.returnSuccessWithOutData();
+    }
+
+
+    @GetMapping("getAllTypeReparis")
+    @ApiOperation("获取所有类型工单总数")
+    public Result getAllTypeReparis(){
+        ReparisCountDTO reparisCountDTO = reparisService.selectAllType();
+        return Result.returnSuccessWithData(reparisCountDTO);
     }
 
 }

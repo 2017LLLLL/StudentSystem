@@ -294,10 +294,16 @@
     select count(1) from t_student where student_num = #{studentNum} and password = #{password}
   </select>
 
+  <!--查询所有学生-->
   <select id="selectAllStudent" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from t_student
+  </select>
+
+  <!--查询有多少学生-->
+  <select id="selectAllCount" resultType="java.lang.Integer">
+    select count(1) from t_student
   </select>
 
 </mapper>
