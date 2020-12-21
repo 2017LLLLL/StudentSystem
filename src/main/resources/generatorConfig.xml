@@ -69,7 +69,7 @@
     	<javaClientGenerator targetPackage="com.flj.student_system.dao"	targetProject="src/main/java" type="XMLMAPPER" />
 
 
-		<table schema="root" tableName="t_student"   enableCountByExample="false"
+	<!--	<table schema="root" tableName="t_student"   enableCountByExample="false"
 			   enableUpdateByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="MySql"/>
@@ -79,7 +79,7 @@
 			   enableUpdateByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="MySql"/>
-		</table>
+		</table>-->
 
 		<!-- shema 数据库 tableName表明 -->
 		<!--学生表-->
@@ -159,8 +159,30 @@
 			   enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="MySql"/>
 		</table>-->
+		<table schema="root" tableName="t_role_router"   enableCountByExample="false"
+			   enableUpdateByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="MySql"/>
+		</table>
+
+		<table schema="root" tableName="t_role_home"   enableCountByExample="false"
+			   enableUpdateByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="MySql"/>
+		</table>
 
 
+		<table schema="root" tableName="t_role_login"   enableCountByExample="false"
+			   enableUpdateByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="MySql"/>
+		</table>
+
+		<table schema="root" tableName="t_role_menu"   enableCountByExample="false"
+			   enableUpdateByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="MySql"/>
+		</table>
 
 	</context>
 </generatorConfiguration>

@@ -235,6 +235,20 @@
     where teacher_id = #{teacherId,jdbcType=INTEGER},
   </update>
 
+  <!--查询某个教师是否存在-->
+  <select id="selectIfOrNotExists" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select count(1) from t_teacher where teacher_id = #{teacherId}
+  </select>
+
+  <!--校验密码-->
+  <select id="selectCheckPassword" resultType="java.lang.Integer">
+    select count(1) from t_teacher where teacher_id = #{teacherId} and password = #{password}
+  </select>
+
+  <!--查询名字-->
+  <select id="selectNameByTeacherId" resultType="java.lang.String">
+    select teacher_name from t_teacher where teacher_id = #{teacherNum}
+  </select>
 
 
 </mapper>

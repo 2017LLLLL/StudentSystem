@@ -1,6 +1,7 @@
 package com.flj.student_system.service.interfaces;
 
 import com.flj.student_system.entity.TCourse;
+import com.flj.student_system.entity.dto.CourseDTO;
 import com.flj.student_system.entity.form.CourseForm;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface CourseService {
     /*
     * 查询所有课程信息
     * */
-    List<TCourse> getAllCourse();
+    List<CourseDTO> getAllCourse();
 
 
     /*

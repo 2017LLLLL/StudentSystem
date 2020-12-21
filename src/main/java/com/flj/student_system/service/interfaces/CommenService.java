@@ -7,4 +7,8 @@ public interface CommenService {
     * */
     int updatePassword(int num,String oldPassword,String newPassword);
 
+    /*
+    * 登录
+    * */
+    void login(Integer peopleId, String password);
 }

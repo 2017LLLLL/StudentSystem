@@ -113,4 +113,18 @@
       mark = #{mark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--根据班级ID查班级名称-->
+  <select id="selectByClassId" parameterType="java.lang.Integer" resultType="java.lang.String">
+    select class_name
+    from t_class_and_grade
+    where class_id = #{classId}
+  </select>
+
+  <!--查询所有班级-->
+  <select id="selectAllClass" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_class_and_grade
+  </select>
 </mapper>

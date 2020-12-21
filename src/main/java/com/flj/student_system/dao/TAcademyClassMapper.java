@@ -50,4 +50,9 @@ public interface TAcademyClassMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(TAcademyClass record);
+
+    /*
+    * 根据classId查询academyclassId
+    * */
+    int selectByClassId(Integer classId);
 }

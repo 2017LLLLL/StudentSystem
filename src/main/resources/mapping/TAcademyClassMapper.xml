@@ -113,4 +113,10 @@
       mark = #{mark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByClassId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select academy_id
+    from t_academy_class
+    where class_id = #{classId,jdbcType=INTEGER}
+  </select>
 </mapper>

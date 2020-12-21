@@ -55,22 +55,32 @@ public interface TStudentMapper {
     int updateByPrimaryKey(TStudent record);
 
     /*
-     * 查询所有学生
-     * */
+    * 查询所有学生
+    * */
     List<TStudent> selectAllStudent();
 
     /*
-    * 新增学生
+    * 插入某个学生
     * */
     int insertOneStudent(StudentForm studentForm);
 
     /*
     * 查询旧密码
     * */
-    String selectOldPassword(long studentNum);
+    String selectOldPassword(long num);
 
     /*
-    * 根据学号修改信息
+    * 更新
     * */
     int updateByStudentNumSelective(TStudent tStudent);
+
+    /*
+    * 查询学生是否存在
+    * */
+    int selectIfOrNotExists(Integer peopleId);
+
+    /*
+    * 修改密码
+    * */
+    int selectCheckPassword(Integer peopleId, String password);
 }

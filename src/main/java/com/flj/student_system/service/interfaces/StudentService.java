@@ -1,6 +1,6 @@
 package com.flj.student_system.service.interfaces;
 
-import com.flj.student_system.entity.TStudent;
+import com.flj.student_system.entity.dto.StudentDTO;
 import com.flj.student_system.entity.form.StudentForm;
 
 import java.util.List;
@@ -11,7 +11,7 @@ public interface StudentService {
     /*
     * 查询所有学生
     * */
-    List<TStudent> getAllStudent();
+    List<StudentDTO> getAllStudent();
 
     /*
     * 新增学生
@@ -23,4 +23,9 @@ public interface StudentService {
     * 修改密码
     * */
     int changePassword(long num,String oldPassword,String newPassword);
+
+    /*
+    * 登录
+    * */
+    void login(Integer peopleId, String password);
 }

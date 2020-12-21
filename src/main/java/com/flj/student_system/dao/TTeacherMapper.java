@@ -2,6 +2,7 @@ package com.flj.student_system.dao;
 
 import com.flj.student_system.entity.TTeacher;
 import com.flj.student_system.entity.form.TeacherForm;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -73,4 +74,20 @@ public interface TTeacherMapper {
      * 根据学号修改信息
      * */
     int updateByTeacherIdSelective(TTeacher tTeacher);
+
+    /*
+    * 检查对应工号教师是否存在
+    * */
+    int selectIfOrNotExists(Integer peopleId);
+
+    /*
+    * 校验账号密码
+    * */
+    int selectCheckPassword(@Param("teacherId") Integer peopleId, @Param("password") String password);
+
+
+    /*
+    * 根据教师工号查询教师名称
+    * */
+    String selectNameByTeacherId(Integer teacherNum);
 }

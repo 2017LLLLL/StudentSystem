@@ -28,4 +28,13 @@ public class CommenImpl implements CommenService {
         }
         return ResultCode;
     }
+
+    @Override
+    public void login(Integer peopleId, String password) {
+        if (TypeCheck.peopleTypeCheck(peopleId) == PeopleCodeEnum.TEACHER_CODE.getCode()) {
+            teacherService.login(peopleId, password);
+        } else {
+            studentService.login(peopleId, password);
+        }
+    }
 }
