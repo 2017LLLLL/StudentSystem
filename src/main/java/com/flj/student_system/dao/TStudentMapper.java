@@ -2,6 +2,7 @@ package com.flj.student_system.dao;
 
 import com.flj.student_system.entity.TStudent;
 import com.flj.student_system.entity.form.StudentForm;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -82,10 +83,15 @@ public interface TStudentMapper {
     /*
     * 修改密码
     * */
-    int selectCheckPassword(Integer peopleId, String password);
+    int selectCheckPassword(@Param("studentNum") Integer peopleId, @Param("password") String password);
 
     /*
     * 查询学生总数
     * */
     int selectAllCount();
+
+    /*
+    * 根据学号查询学生
+    * */
+    TStudent selectByStuNum(Integer peopleId);
 }

@@ -43,13 +43,17 @@ public class RoleImpl implements RoleService {
         TRoleRouter tRoleRouter = tRoleRouters.get(0);
         Integer logoinfoId = tRoleRouter.getLogoinfo();
         TRoleLogin tRoleLogin = tRoleLoginMapper.selectByPrimaryKey(logoinfoId);
+        // 拼装返回LogoInfo对象
         LogoInfo logoInfo = new LogoInfo();
         BeanUtils.copyProperties(tRoleLogin,logoInfo);
+        // 组装JSON
         roleMenuDTO.setLogoInfo(logoInfo);
         Integer homeinfoId = tRoleRouter.getHomeinfo();
         TRoleHome tRoleHome = tRoleHomeMapper.selectByPrimaryKey(homeinfoId);
+        // HomeInfo
         HomeInfo homeInfo = new HomeInfo();
         BeanUtils.copyProperties(tRoleHome,homeInfo);
+        // 组装JSON
         roleMenuDTO.setHomeInfo(homeInfo);
         // 获取菜单集合
         List<Integer> menuList = new ArrayList<>();

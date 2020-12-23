@@ -138,4 +138,13 @@
       role_id = #{roleId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectRoleIdByPeopleId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select role_id
+    from t_user_role
+    where user_num = #{peopleId}
+  </select>
+
 </mapper>
+
+

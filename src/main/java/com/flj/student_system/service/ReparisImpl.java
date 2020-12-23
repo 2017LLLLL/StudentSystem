@@ -3,11 +3,14 @@ package com.flj.student_system.service;
 import com.flj.student_system.dao.TRepairsMapper;
 import com.flj.student_system.entity.TRepairs;
 import com.flj.student_system.entity.dto.ReparisCountDTO;
+import com.flj.student_system.entity.dto.ReparisStateDTO;
 import com.flj.student_system.entity.form.RepairsForm;
+import com.flj.student_system.exception.MyException;
 import com.flj.student_system.service.interfaces.ReparisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -71,6 +74,35 @@ public class ReparisImpl implements ReparisService {
         reparisCountDTO.setFinishReparis(selectAllFinishCount());
         reparisCountDTO.setNotFinishReparis(selectAllNotFinishCount());
         return reparisCountDTO;
+    }
+
+    @Override
+    public List<ReparisStateDTO> selectGroupsType() {
+        List<Integer> listType = tRepairsMapper.selectStateAll();
+        List<ReparisStateDTO> reparisStateDTOList = new ArrayList<>();
+        for (Integer integer : listType) {
+            ReparisStateDTO reparisStateDTO = new ReparisStateDTO();
+            reparisStateDTO.setState(integer);
+            if(integer.equals(0) || integer == 0){
+                reparisStateDTO.setTitle("待处理");
+            }else if(integer.equals(1) || integer == 1){
+                reparisStateDTO.setTitle("处理完成");
+            }else{
+                reparisStateDTO.setTitle("已取消");
+            }
+            reparisStateDTOList.add(reparisStateDTO);
+        }
+        return reparisStateDTOList;
+    }
+
+
+    @Override
+    public List<TRepairs> getAllReparisByDormitory(Integer dormitoryNum) {
+        List<TRepairs> tRepairs = tRepairsMapper.selectByDormitoryNum(dormitoryNum);
+        if(tRepairs == null || tRepairs.size() ==0){
+            throw new MyException("该宿舍目前无工单信息");
+        }
+        return tRepairs;
     }
 
 

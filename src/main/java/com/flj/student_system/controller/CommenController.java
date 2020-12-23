@@ -1,6 +1,7 @@
 package com.flj.student_system.controller;
 
 
+import com.flj.student_system.entity.dto.UserDTO;
 import com.flj.student_system.service.interfaces.CommenService;
 import com.flj.student_system.util.Result;
 import io.swagger.annotations.Api;
@@ -39,8 +40,8 @@ public class CommenController {
         if(peopleId == null || password == null){
             return Result.returnFailWithMessage("数据插入失败，请检查数据是否存在或缺少关键信息");
         }
-        commenService.login(peopleId,password);
-        return Result.returnSuccessWithOutData();
+        UserDTO userDTO = commenService.login(peopleId, password);
+        return Result.returnSuccessWithData(userDTO);
     }
 
 }

@@ -87,7 +87,7 @@ public class StudentImpl implements StudentService {
     }
 
     @Override
-    public void login(Integer peopleId, String password) {
+    public TStudent login(Integer peopleId, String password) {
         if(peopleId == null || password == null){
             throw new MyException("账号密码不能为空");
         }
@@ -95,13 +95,24 @@ public class StudentImpl implements StudentService {
         if(exists != 1){
             throw new MyException("学号对应学生不存在，请检查学号是否有误！");
         }
-        int checkResult = tStudentMapper.selectCheckPassword(peopleId, password);
-        if(checkResult != 1){
-            throw new MyException("账号密码不匹配，请检查密码是否有误！");
+        TStudent tStudent = selectByStudentNum(peopleId);
+        String passwordFromDB = tStudent.getPassword();
+        if(!password.equals(passwordFromDB)){
+            throw new MyException("学生学号与密码不匹配");
         }
+        return tStudent;
+
 
     }
 
+    @Override
+    public TStudent selectByStudentNum(Integer peopleId) {
+        TStudent tStudent = tStudentMapper.selectByStuNum(peopleId);
+        if(tStudent == null){
+            throw new MyException("学号无对应学生");
+        }
+        return tStudent;
+    }
 
 
 }

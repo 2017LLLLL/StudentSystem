@@ -1,5 +1,7 @@
 package com.flj.student_system.service.interfaces;
 
+import com.flj.student_system.entity.dto.UserDTO;
+
 public interface CommenService {
 
     /*
@@ -10,5 +12,5 @@ public interface CommenService {
     /*
     * 登录
     * */
-    void login(Integer peopleId, String password);
+    UserDTO login(Integer peopleId, String password);
 }

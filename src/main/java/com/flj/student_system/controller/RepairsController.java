@@ -1,9 +1,14 @@
 package com.flj.student_system.controller;
 
 import com.flj.student_system.entity.TRepairs;
+import com.flj.student_system.entity.TStudent;
 import com.flj.student_system.entity.dto.ReparisCountDTO;
+import com.flj.student_system.entity.dto.ReparisStateDTO;
+import com.flj.student_system.entity.dto.UserDTO;
 import com.flj.student_system.entity.form.RepairsForm;
+import com.flj.student_system.exception.MyException;
 import com.flj.student_system.service.interfaces.ReparisService;
+import com.flj.student_system.service.interfaces.StudentService;
 import com.flj.student_system.util.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("repairs")
 @Api(tags = "维修工单数据操作接口")
@@ -20,6 +27,9 @@ public class RepairsController {
 
     @Autowired
     private ReparisService reparisService;
+
+    @Autowired
+    private StudentService studentService;
 
     @GetMapping("getAllRepairs")
     @ApiOperation("获取所有维修工单信息")
@@ -62,4 +72,24 @@ public class RepairsController {
         return Result.returnSuccessWithData(reparisCountDTO);
     }
 
+    @GetMapping("selectGroupsType")
+    @ApiOperation("获取所有类型工单种类")
+    public Result getGroupsType(){
+        List<ReparisStateDTO> reparisGroupType = reparisService.selectGroupsType();
+        return Result.returnSuccessWithData(reparisGroupType);
+    }
+
+
+    @PostMapping("getAllReparisBy")
+    @ApiOperation("获取本宿舍所有工单")
+    public Result getAllReparisBy(UserDTO userDTO){
+        Integer peopleId = userDTO.getPeopleId();
+        System.out.println(peopleId);
+        if(peopleId == null){
+            throw new MyException("用户未登录");
+        }
+        TStudent tStudent = studentService.selectByStudentNum(peopleId);
+        List<TRepairs> allReparisByDormitory = reparisService.getAllReparisByDormitory(tStudent.getDormitoryNum());
+        return Result.returnSuccessWithData(allReparisByDormitory);
+    }
 }

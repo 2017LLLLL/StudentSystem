@@ -58,4 +58,9 @@ public interface TUserRoleMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(TUserRole record);
+
+    /*
+    * 根据工号查询角色id
+    * */
+    int selectRoleIdByPeopleId(Integer peopleId);
 }

@@ -1,5 +1,6 @@
 package com.flj.student_system.service.interfaces;
 
+import com.flj.student_system.entity.TStudent;
 import com.flj.student_system.entity.dto.StudentDTO;
 import com.flj.student_system.entity.form.StudentForm;
 
@@ -27,5 +28,10 @@ public interface StudentService {
     /*
     * 登录
     * */
-    void login(Integer peopleId, String password);
+    TStudent login(Integer peopleId, String password);
+
+    /*
+    * 根据学号查询学生
+    * */
+    TStudent selectByStudentNum(Integer peopleId);
 }

@@ -80,4 +80,14 @@ public interface TRepairsMapper {
     * 查询未完成工单总数
     * */
     int selectCountNotFinishRepairs();
+
+    /*
+    * 查看工单状态总数
+    * */
+    List<Integer> selectStateAll();
+
+    /*
+    * 根据宿舍号查询工单
+    * */
+    List<TRepairs> selectByDormitoryNum(Integer dormitoryNum);
 }

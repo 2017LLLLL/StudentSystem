@@ -306,4 +306,12 @@
     select count(1) from t_student
   </select>
 
+  <!--根据学号查询学生-->
+  <select id="selectByStuNum" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_student
+    where student_num = #{studentNum,jdbcType=INTEGER}
+  </select>
+
 </mapper>

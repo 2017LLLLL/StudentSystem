@@ -25,5 +25,5 @@ public interface TeacherService {
     /*
     * 登录
     * */
-    void login(Integer peopleId, String password);
+    int login(Integer peopleId, String password);
 }

@@ -72,7 +72,7 @@ public class TeacherImpl implements TeacherService {
     }
 
     @Override
-    public void login(Integer peopleId, String password) {
+    public int login(Integer peopleId, String password) {
         if(peopleId == null || password == null){
             throw new MyException("账号密码不能为空");
         }
@@ -84,6 +84,7 @@ public class TeacherImpl implements TeacherService {
         if(checkResult != 1){
             throw new MyException("账号密码不匹配，请检查密码是否有误！");
         }
+        return checkResult;
     }
 
 
