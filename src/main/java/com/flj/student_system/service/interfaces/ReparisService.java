@@ -27,23 +27,28 @@ public interface ReparisService {
     /*
     * 查询所有工单数
     * */
-    int selectAllCount();
+    int selectAllCount(Integer dormitoryNum);
 
     /*
      * 查询所有已完成工单数
      * */
-    int selectAllFinishCount();
+    int selectAllFinishCount(Integer dormitoryNum);
 
     /*
      * 查询所有未完成工单数
      * */
-    int selectAllNotFinishCount();
+    int selectAllNotFinishCount(Integer dormitoryNum);
+
+    /*
+     * 查询所有未完成工单数
+     * */
+    int selectEvelFinishCount(Integer dormitoryNum);
 
 
     /*
     * 查询所有类型的总数
     * */
-    ReparisCountDTO selectAllType();
+    ReparisCountDTO selectAllType(Integer dormitoryNum);
 
    /*
    * 查询每种状态的标识码
@@ -54,4 +59,29 @@ public interface ReparisService {
      * 通过宿舍号获取所有维修工单信息
      * */
     List<TRepairs> getAllReparisByDormitory(Integer dormitoryNum);
+
+    /*
+    * 根据宿舍或者工单状态查询
+    * */
+    List<TRepairs> getAllReparisByDormitoryOrState(Integer dormitoryNum, Integer state);
+
+    /*
+    * 评价工单
+    * */
+    void evaluateReparis(TRepairs tRepairs);
+
+    /*
+    * 删除工单
+    * */
+    void deleteRepairs(Integer id);
+
+    /*
+    * 修改工单信息
+    * */
+    void updateInfo(TRepairs tRepairs);
+
+    /*
+    *
+    * */
+    List<ReparisStateDTO> selectAllCountByStudent(Integer dormitoryNum);
 }

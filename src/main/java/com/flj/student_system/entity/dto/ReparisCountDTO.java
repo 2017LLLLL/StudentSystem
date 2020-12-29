@@ -4,6 +4,7 @@ public class ReparisCountDTO {
     private Integer allReparis;
     private Integer finishReparis;
     private Integer notFinishReparis;
+    private Integer evelReparis;
 
     public Integer getAllReparis() {
         return allReparis;
@@ -29,5 +30,11 @@ public class ReparisCountDTO {
         this.notFinishReparis = notFinishReparis;
     }
 
+    public Integer getEvelReparis() {
+        return evelReparis;
+    }
 
+    public void setEvelReparis(Integer evelReparis) {
+        this.evelReparis = evelReparis;
+    }
 }

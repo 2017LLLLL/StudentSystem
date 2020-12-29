@@ -1,6 +1,7 @@
 package com.flj.student_system.controller;
 
 
+import com.flj.student_system.entity.dto.PowerBigDTO;
 import com.flj.student_system.entity.dto.UserDTO;
 import com.flj.student_system.service.interfaces.CommenService;
 import com.flj.student_system.util.Result;
@@ -9,6 +10,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("commen")
@@ -36,12 +39,20 @@ public class CommenController {
     @ApiOperation("登录")
     public Result login(
             @ApiParam(value = "登录账号（教师工号，学生学号）" , required=true ) @RequestParam("username")Integer peopleId,
-            @ApiParam(value = "登录密码" , required=true ) @RequestParam("password")String password){
+            @ApiParam(value = "登录密码" , required=true ) @RequestParam("password")String password, HttpSession httpSession){
         if(peopleId == null || password == null){
             return Result.returnFailWithMessage("数据插入失败，请检查数据是否存在或缺少关键信息");
         }
         UserDTO userDTO = commenService.login(peopleId, password);
+        httpSession.setAttribute("userDTO",userDTO);
         return Result.returnSuccessWithData(userDTO);
+    }
+
+    @PostMapping("indexInfo")
+    @ApiOperation("超级管理员首页数据展示")
+    public Result indexInfo(){
+        PowerBigDTO powerBigDTO = commenService.showInfoIndex();
+        return Result.returnSuccessWithData(powerBigDTO);
     }
 
 }

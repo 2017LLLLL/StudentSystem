@@ -114,5 +114,10 @@ public class StudentImpl implements StudentService {
         return tStudent;
     }
 
+    @Override
+    public int selectAllStudent() {
+        return tStudentMapper.selectAllCount();
+    }
+
 
 }

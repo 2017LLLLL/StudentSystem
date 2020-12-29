@@ -16,7 +16,7 @@ public class RepairsTest {
 
     @Test
     public void getAllRepairs(){
-        List<TRepairs> repairs = repairsMapper.selectAllRepairs();
+        List<TRepairs> repairs = repairsMapper.selectAllRepairs(null,null);
         for (int i = 0; i < repairs.size(); i++) {
             System.out.println(repairs.get(i));
         }

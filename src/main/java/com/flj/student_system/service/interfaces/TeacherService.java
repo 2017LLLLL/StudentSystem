@@ -1,5 +1,6 @@
 package com.flj.student_system.service.interfaces;
 
+import com.flj.student_system.entity.TTeacher;
 import com.flj.student_system.entity.dto.TeacherDTO;
 import com.flj.student_system.entity.form.TeacherForm;
 
@@ -25,5 +26,10 @@ public interface TeacherService {
     /*
     * 登录
     * */
-    int login(Integer peopleId, String password);
+    TTeacher login(Integer peopleId, String password);
+
+    /*
+    * 查询所有教师数量
+    * */
+    int selectAllTeacher();
 }

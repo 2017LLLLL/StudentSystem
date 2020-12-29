@@ -34,4 +34,9 @@ public interface StudentService {
     * 根据学号查询学生
     * */
     TStudent selectByStudentNum(Integer peopleId);
+
+    /*
+    * 查询所有的学生总数
+    * */
+    int selectAllStudent();
 }

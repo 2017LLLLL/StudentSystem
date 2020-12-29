@@ -90,4 +90,15 @@ public interface TTeacherMapper {
     * 根据教师工号查询教师名称
     * */
     String selectNameByTeacherId(Integer teacherNum);
+
+
+    /*
+    * 查询所有的教师数量
+    * */
+    int selectAllTeacherCount();
+
+    /*
+    * 根据教师工号查询教师所有信息
+    * */
+    TTeacher selectTeacherByPeopleId(Integer peopleId);
 }

@@ -5,6 +5,7 @@ import com.flj.student_system.entity.TRepairs;
 import com.flj.student_system.entity.dto.ReparisCountDTO;
 import com.flj.student_system.entity.dto.ReparisStateDTO;
 import com.flj.student_system.entity.form.RepairsForm;
+import com.flj.student_system.enums.ReparisStateEnum;
 import com.flj.student_system.exception.MyException;
 import com.flj.student_system.service.interfaces.ReparisService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class ReparisImpl implements ReparisService {
 
     @Override
     public List<TRepairs> getAllReparis() {
-        return tRepairsMapper.selectAllRepairs();
+        return tRepairsMapper.selectAllRepairs(null,null);
     }
 
     @Override
@@ -53,26 +54,32 @@ public class ReparisImpl implements ReparisService {
 
 
     @Override
-    public int selectAllCount() {
-        return tRepairsMapper.selectCountRepairs();
+    public int selectAllCount(Integer dormitoryNum) {
+        return tRepairsMapper.selectCountRepairs(dormitoryNum);
     }
 
     @Override
-    public int selectAllFinishCount() {
-        return tRepairsMapper.selectCountFinishRepairs();
+    public int selectAllFinishCount(Integer dormitoryNum) {
+        return tRepairsMapper.selectCountFinishRepairs(dormitoryNum);
     }
 
     @Override
-    public int selectAllNotFinishCount() {
-        return tRepairsMapper.selectCountNotFinishRepairs();
+    public int selectAllNotFinishCount(Integer dormitoryNum) {
+        return tRepairsMapper.selectCountNotFinishRepairs(dormitoryNum);
     }
 
     @Override
-    public ReparisCountDTO selectAllType() {
+    public int selectEvelFinishCount(Integer dormitoryNum) {
+        return tRepairsMapper.selectCountEveluRepairs(dormitoryNum);
+    }
+
+    @Override
+    public ReparisCountDTO selectAllType(Integer dormitoryNum) {
         ReparisCountDTO reparisCountDTO = new ReparisCountDTO();
-        reparisCountDTO.setAllReparis(selectAllCount());
-        reparisCountDTO.setFinishReparis(selectAllFinishCount());
-        reparisCountDTO.setNotFinishReparis(selectAllNotFinishCount());
+        reparisCountDTO.setAllReparis(selectAllCount(dormitoryNum));
+        reparisCountDTO.setFinishReparis(selectAllFinishCount(dormitoryNum));
+        reparisCountDTO.setNotFinishReparis(selectAllNotFinishCount(dormitoryNum));
+        reparisCountDTO.setEvelReparis(selectEvelFinishCount(dormitoryNum));
         return reparisCountDTO;
     }
 
@@ -86,7 +93,9 @@ public class ReparisImpl implements ReparisService {
             if(integer.equals(0) || integer == 0){
                 reparisStateDTO.setTitle("待处理");
             }else if(integer.equals(1) || integer == 1){
-                reparisStateDTO.setTitle("处理完成");
+                reparisStateDTO.setTitle("已处理");
+            }else if(integer.equals(2) || integer == 1){
+                reparisStateDTO.setTitle("完成评价");
             }else{
                 reparisStateDTO.setTitle("已取消");
             }
@@ -103,6 +112,42 @@ public class ReparisImpl implements ReparisService {
             throw new MyException("该宿舍目前无工单信息");
         }
         return tRepairs;
+    }
+
+
+    @Override
+    public List<TRepairs> getAllReparisByDormitoryOrState(Integer dormitoryNum, Integer state) {
+        return tRepairsMapper.selectAllRepairs(dormitoryNum,state);
+    }
+
+
+    @Override
+    public void evaluateReparis(TRepairs tRepairs) {
+        if(tRepairs == null){
+            throw new MyException("传入的工单相关数据为空");
+        }
+        // 设置状态
+        tRepairs.setState(ReparisStateEnum.EVALUATE_REPARIS.getCode());
+        tRepairsMapper.updateByPrimaryKeySelective(tRepairs);
+    }
+
+    @Override
+    public void deleteRepairs(Integer id) {
+
+    }
+
+    @Override
+    public void updateInfo(TRepairs tRepairs) {
+        if(tRepairs == null || tRepairs.getId() == null){
+            throw new MyException("传入工单数据为空!");
+        }
+        tRepairsMapper.updateByPrimaryKeySelective(tRepairs);
+    }
+
+    @Override
+    public List<ReparisStateDTO> selectAllCountByStudent(Integer dormitoryNum) {
+
+        return null;
     }
 
 

@@ -31,6 +31,14 @@
     select
     <include refid="Base_Column_List" />
     from t_repairs
+    <where>
+      <if test="state != null">
+        state = #{state}
+      </if>
+      <if test="dormitoryNum != null">
+        and dormitory_num = #{dormitoryNum}
+      </if>
+    </where>
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -131,6 +139,9 @@
       <if test="state != null">
         state = #{state,jdbcType=TINYINT},
       </if>
+      <if test="evaluate != null">
+        evaluate = #{evaluate,jdbcType=TINYINT},
+      </if>
       <if test="mark != null">
         mark = #{mark,jdbcType=VARCHAR},
       </if>
@@ -187,18 +198,46 @@
 
 
   <!--查询所有工单-->
-  <select id="selectCountRepairs" resultType="java.lang.Integer">
+  <select id="selectCountRepairs" resultType="java.lang.Integer" >
     select count(1) from t_repairs
+    <where>
+      <if test="dormitoryNum != null">
+        and dormitory_num = #{dormitoryNum}
+      </if>
+    </where>
   </select>
 
   <!--查询已完成工单数据-->
   <select id="selectCountFinishRepairs" resultType="java.lang.Integer">
-    select count(1) from t_repairs where state = 1;
+    select count(1) from t_repairs
+    <where>
+      state = 1
+      <if test="dormitoryNum != null">
+        and dormitory_num = #{dormitoryNum}
+      </if>
+    </where>
   </select>
 
   <!--查询待完成工单数据-->
   <select id="selectCountNotFinishRepairs" resultType="java.lang.Integer">
-    select count(1) from t_repairs where state = 0;
+    select count(1) from t_repairs
+    <where>
+      state = 0
+      <if test="dormitoryNum != null">
+        and dormitory_num = #{dormitoryNum}
+      </if>
+    </where>
+  </select>
+
+  <!--查询已评价工单数据-->
+  <select id="selectCountEveluRepairs" resultType="java.lang.Integer">
+    select count(1) from t_repairs
+    <where>
+      state = 2
+      <if test="dormitoryNum != null">
+        and dormitory_num = #{dormitoryNum}
+      </if>
+    </where>
   </select>
 
   <!--查询目前已有的工单状态-->
@@ -212,6 +251,7 @@
     <include refid="Base_Column_List" />
     from t_repairs where dormitory_num = #{dormitoryNum};
   </select>
+
 
 
 </mapper>

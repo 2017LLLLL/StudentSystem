@@ -68,4 +68,10 @@ public interface TCourseMapper {
     * 查询某个教师所教的课程
     * */
     List<TCourse> selectCourseByTeacherId(Integer teacherId);
+
+    /*
+    * 查询课程总数
+    * */
+    int selectAllCourseCount();
+
 }

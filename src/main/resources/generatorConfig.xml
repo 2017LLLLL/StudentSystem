@@ -178,7 +178,12 @@
 			<generatedKey column="id" sqlStatement="MySql"/>
 		</table>-->
 
-		<table schema="root" tableName="t_router_menu"   enableCountByExample="false"
+		<!--<table schema="root" tableName="t_router_menu"   enableCountByExample="false"
+			   enableUpdateByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="MySql"/>
+		</table>-->
+		<table schema="root" tableName="t_course_time"   enableCountByExample="false"
 			   enableUpdateByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="MySql"/>

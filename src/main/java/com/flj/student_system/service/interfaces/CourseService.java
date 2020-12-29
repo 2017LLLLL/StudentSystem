@@ -24,4 +24,9 @@ public interface CourseService {
     * */
     List<TCourse> selectCourseByTeacherId(Integer teacherId);
 
+    /*
+    * 查询课程总数
+    * */
+    int selectAllCountCourse();
+
 }

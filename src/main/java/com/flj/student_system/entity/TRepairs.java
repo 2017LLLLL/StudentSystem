@@ -179,4 +179,12 @@ public class TRepairs {
     public void setMark(String mark) {
         this.mark = mark;
     }
+
+    public String getEvaluate() {
+        return evaluate;
+    }
+
+    public void setEvaluate(String evaluate) {
+        this.evaluate = evaluate;
+    }
 }

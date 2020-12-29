@@ -62,4 +62,9 @@ public class CourseImpl implements CourseService {
         }
         return tCourses;
     }
+
+    @Override
+    public int selectAllCountCourse() {
+        return tCourseMapper.selectAllCourseCount();
+    }
 }

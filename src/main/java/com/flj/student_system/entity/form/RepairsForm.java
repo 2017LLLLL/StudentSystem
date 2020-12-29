@@ -6,6 +6,8 @@ import java.util.Date;
 
 public class RepairsForm {
 
+
+
     @ApiModelProperty(value = "宿舍号")
     private Integer dormitoryNum;
 
@@ -14,6 +16,8 @@ public class RepairsForm {
 
     @ApiModelProperty(value = "报修问题")
     private String problem;
+
+
 
     @ApiModelProperty(value = "备注")
     private String mark;
